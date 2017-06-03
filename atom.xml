@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>climates</title>
+  <subtitle>czars&#39; dev world</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://czars.github.io/"/>
+  <updated>2017-06-03T03:44:27.000Z</updated>
+  <id>https://czars.github.io/</id>
+  
+  <author>
+    <name>Paul Chou</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IGListKit adoption</title>
+    <link href="https://czars.github.io/2017/06/03/adapt-IGListKit/"/>
+    <id>https://czars.github.io/2017/06/03/adapt-IGListKit/</id>
+    <published>2017-06-02T16:42:11.000Z</published>
+    <updated>2017-06-03T03:44:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>自從公司的App建構了新版的首頁之後，就在思考有沒有更能夠改善效能跟方便擴充性的架構。後來看到了FB的iOS Developer分享了這個Talk <a href="https://realm.io/news/tryswift-ryan-nystrom-refactoring-at-scale-lessons-learned-rewriting-instagram-feed/" target="_blank" rel="external">(talk at try! Swift NYC)</a></p>
+<hr>
+<p>對於原本的 <code>UICollectionView</code> or <code>UITableView</code> 來說，單一頁面存在多種不同 <code>layout</code>、<code>data type</code> 的設計，就不是一項可以讓設計簡潔、程式碼單純的功能。</p>
+<p>依照過去類似的經驗，大概會是將每個 <code>item</code> / <code>cell</code> 的位置的檔案先用不同的 <code>model</code> 定義出來。例如：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">content : [</div><div class="line">  card, card, list, card, ad, tag</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>每當決定每個 <code>row</code> 的類型時，透過 <code>content</code> 的內容去決定要產出什麼樣的 <code>item</code> ，這樣的設計，就叫做 <code>data driven</code> 的 <code>collectionView</code> pattern。</p>
+<p>不過單純使用<code>content</code>決定UI的設計在原始的 <code>UICollectionView</code> or <code>UITableView</code> 上，會有幾個缺點。</p>
+<ol>
+<li>需要在多個位置判斷 <code>data type</code>，造成程式碼邏輯重複</li>
+<li>如果忘記 <code>register cell/item type</code>，則會造成crash，也增加系統風險</li>
+<li>在 <code>UICollectionView</code> 中插入 <code>Horizontal UICollectionView</code>，delegate需要獨立出來成為一個 <code>class / file</code>，而這樣的設計，也增加了閱讀的困難度</li>
+</ol>
+<p><code>IGListKit</code> 主要就是解決了以上的三個問題。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自從公司的App建構了新版的首頁之後，就在思考有沒有更能夠改善效能跟方便擴充性的架構。後來看到了FB的iOS Developer分享了這個Talk &lt;a href=&quot;https://realm.io/news/tryswift-ryan-nystrom-refactorin
+    
+    </summary>
+    
+      <category term="develop" scheme="https://czars.github.io/categories/develop/"/>
+    
+    
+      <category term="iOS" scheme="https://czars.github.io/tags/iOS/"/>
+    
+      <category term="third Party" scheme="https://czars.github.io/tags/third-Party/"/>
+    
+      <category term="IGListKit" scheme="https://czars.github.io/tags/IGListKit/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://czars.github.io/2016/12/02/hello-world/"/>
+    <id>https://czars.github.io/2016/12/02/hello-world/</id>
+    <published>2016-12-01T17:40:11.000Z</published>
+    <updated>2016-12-01T17:40:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
